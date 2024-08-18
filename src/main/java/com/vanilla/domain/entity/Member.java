@@ -6,6 +6,8 @@ import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Getter @Setter
 public class Member extends CuDate {
@@ -17,8 +19,16 @@ public class Member extends CuDate {
     private String memberPhone;
     private String memberAddress;
     private String memberPw;
-    private String memberType;
-    private String memberDel;
+    private String memberType= "N3";
+
+    private String memberDel = "N";
+
+
+//    public List<PaymentMethod> getPaymentMethods() {
+//
+//        return paymentMethods;
+//    }
+
 
 
 }

@@ -1,11 +1,22 @@
 package com.vanilla.domain.entity;
 
 import com.vanilla.domain.entity.superclass.CuDate;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
+import java.util.List;
+
+@Entity
+@Getter @Setter
 public class ExpendStatistics extends CuDate {
+    @Id
     private Long statisticsId;
 
     private String memberId;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<ExpendStatisticsDetail> statisticsDetails;
 
     private int statisticsYear;
     private int statisticsMonth;
