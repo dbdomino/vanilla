@@ -1,0 +1,16 @@
+타임리프 디렉토리 구조
+src/main
+    ├── java
+    │   └── com
+    └── resources
+        ├── static (CSS, JS, 이미지 등 정적 파일들)
+        │   ├── css
+        │   │   └── bootstrap.min.css
+        │   └── js
+        │       └── bootstrap.min.js
+        └── templates (타임리프 템플릿 파일들)
+
+
+
+
+src/test
