@@ -6,10 +6,14 @@ spring:
   application:
     name: vanilla_v1
   datasource:
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:testdb
-    username: sa
-    password:
+    url: jdbc:mysql://localhost:3306/dbvanilla?useSSL=false
+    username: minod
+    password: minod
+    driver-class-name: com.mysql.cj.jdbc.Driver
+#    driver-class-name: org.h2.Driver
+#    url: jdbc:h2:mem:testdb
+#    username: sa
+#    password:
     #driver-class-name: org.postgresql.Driver
     #url: jdbc:postgresql://localhost:5432/shop
     #username: minod
