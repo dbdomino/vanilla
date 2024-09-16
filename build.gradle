@@ -53,6 +53,8 @@ dependencies {
 	runtimeOnly 'com.h2database:h2'
 	//postgre driver
 	implementation group: 'org.postgresql', name: 'postgresql', version: '42.6.0'
+	//mysql driver
+	runtimeOnly 'com.mysql:mysql-connector-j:8.1.0'
 
 // == 스프링 부트 3.0 이상 ==
 //	implementation 'com.querydsl:querydsl-jpa:5.0.0:jakarta'
