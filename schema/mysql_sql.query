@@ -1,0 +1,343 @@
+22:35:34.908 [restartedMain] INFO  o.hibernate.orm.connections.access --HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@65646b86] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+22:35:34.923 [restartedMain] DEBUG org.hibernate.SQL --
+    create table expend_classification_seq (
+        next_val bigint
+    ) engine=InnoDB
+Hibernate:
+    create table expend_classification_seq (
+        next_val bigint
+    ) engine=InnoDB
+22:35:34.945 [restartedMain] DEBUG org.hibernate.SQL --
+    insert into expend_classification_seq values ( 1 )
+Hibernate:
+    insert into expend_classification_seq values ( 1 )
+22:35:34.949 [restartedMain] DEBUG org.hibernate.SQL --
+    create table expend_seq (
+        next_val bigint
+    ) engine=InnoDB
+Hibernate:
+    create table expend_seq (
+        next_val bigint
+    ) engine=InnoDB
+22:35:34.958 [restartedMain] DEBUG org.hibernate.SQL --
+    insert into expend_seq values ( 1 )
+Hibernate:
+    insert into expend_seq values ( 1 )
+22:35:34.960 [restartedMain] DEBUG org.hibernate.SQL --
+    create table expend_statistics_detail_seq (
+        next_val bigint
+    ) engine=InnoDB
+Hibernate:
+    create table expend_statistics_detail_seq (
+        next_val bigint
+    ) engine=InnoDB
+22:35:34.969 [restartedMain] DEBUG org.hibernate.SQL --
+    insert into expend_statistics_detail_seq values ( 1 )
+Hibernate:
+    insert into expend_statistics_detail_seq values ( 1 )
+22:35:34.970 [restartedMain] DEBUG org.hibernate.SQL --
+    create table expend_classification (
+        classification_id bigint not null,
+        classification_name varchar(255),
+        limit_cost bigint not null,
+        member_id varchar(255),
+        sequence varchar(255),
+        stat varchar(255),
+        primary key (classification_id)
+    ) engine=InnoDB
+Hibernate:
+    create table expend_classification (
+        classification_id bigint not null,
+        classification_name varchar(255),
+        limit_cost bigint not null,
+        member_id varchar(255),
+        sequence varchar(255),
+        stat varchar(255),
+        primary key (classification_id)
+    ) engine=InnoDB
+22:35:34.981 [restartedMain] DEBUG org.hibernate.SQL --
+    create table expend_fixed (
+        id bigint not null,
+        date_create datetime(6),
+        date_update datetime(6),
+        expend_cost bigint,
+        expend_memo varchar(255),
+        expend_name varchar(255),
+        member_id varchar(255),
+        sequence varchar(255),
+        stat varchar(255),
+        fix_day integer not null,
+        group_id varchar(255),
+        primary key (id)
+    ) engine=InnoDB
+Hibernate:
+    create table expend_fixed (
+        id bigint not null,
+        date_create datetime(6),
+        date_update datetime(6),
+        expend_cost bigint,
+        expend_memo varchar(255),
+        expend_name varchar(255),
+        member_id varchar(255),
+        sequence varchar(255),
+        stat varchar(255),
+        fix_day integer not null,
+        group_id varchar(255),
+        primary key (id)
+    ) engine=InnoDB
+22:35:34.991 [restartedMain] DEBUG org.hibernate.SQL --
+    create table expend_moment (
+        id bigint not null,
+        date_create datetime(6),
+        date_update datetime(6),
+        expend_cost bigint,
+        expend_memo varchar(255),
+        expend_name varchar(255),
+        member_id varchar(255),
+        sequence varchar(255),
+        stat varchar(255),
+        expend_date date,
+        expend_location varchar(255),
+        payment_method_id bigint,
+        classification_id bigint,
+        primary key (id)
+    ) engine=InnoDB
+Hibernate:
+    create table expend_moment (
+        id bigint not null,
+        date_create datetime(6),
+        date_update datetime(6),
+        expend_cost bigint,
+        expend_memo varchar(255),
+        expend_name varchar(255),
+        member_id varchar(255),
+        sequence varchar(255),
+        stat varchar(255),
+        expend_date date,
+        expend_location varchar(255),
+        payment_method_id bigint,
+        classification_id bigint,
+        primary key (id)
+    ) engine=InnoDB
+22:35:35.002 [restartedMain] DEBUG org.hibernate.SQL --
+    create table expend_statistics (
+        statistics_id bigint not null,
+        date_create datetime(6),
+        date_update datetime(6),
+        member_id varchar(255),
+        statistics_memo varchar(255),
+        statistics_month integer not null,
+        statistics_year integer not null,
+        sum_classification bigint,
+        sum_fixed bigint,
+        sum_spend bigint,
+        primary key (statistics_id)
+    ) engine=InnoDB
+Hibernate:
+    create table expend_statistics (
+        statistics_id bigint not null,
+        date_create datetime(6),
+        date_update datetime(6),
+        member_id varchar(255),
+        statistics_memo varchar(255),
+        statistics_month integer not null,
+        statistics_year integer not null,
+        sum_classification bigint,
+        sum_fixed bigint,
+        sum_spend bigint,
+        primary key (statistics_id)
+    ) engine=InnoDB
+22:35:35.013 [restartedMain] DEBUG org.hibernate.SQL --
+    create table expend_statistics_statistics_details (
+        expend_statistics_statistics_id bigint not null,
+        statistics_details_statistics_detail_id bigint not null,
+        statistics_details_statistics_id bigint not null
+    ) engine=InnoDB
+Hibernate:
+    create table expend_statistics_statistics_details (
+        expend_statistics_statistics_id bigint not null,
+        statistics_details_statistics_detail_id bigint not null,
+        statistics_details_statistics_id bigint not null
+    ) engine=InnoDB
+22:35:35.022 [restartedMain] DEBUG org.hibernate.SQL --
+    create table expend_statistics_detail (
+        statistics_id bigint not null,
+        statistics_detail_id bigint not null,
+        spend_cost bigint,
+        spend_name varchar(255),
+        statistics_month integer not null,
+        statistics_year integer not null,
+        type varchar(255),
+        primary key (statistics_detail_id, statistics_id)
+    ) engine=InnoDB
+Hibernate:
+    create table expend_statistics_detail (
+        statistics_id bigint not null,
+        statistics_detail_id bigint not null,
+        spend_cost bigint,
+        spend_name varchar(255),
+        statistics_month integer not null,
+        statistics_year integer not null,
+        type varchar(255),
+        primary key (statistics_detail_id, statistics_id)
+    ) engine=InnoDB
+22:35:35.031 [restartedMain] DEBUG org.hibernate.SQL --
+    create table login_history_seq (
+        next_val bigint
+    ) engine=InnoDB
+Hibernate:
+    create table login_history_seq (
+        next_val bigint
+    ) engine=InnoDB
+22:35:35.041 [restartedMain] DEBUG org.hibernate.SQL --
+    insert into login_history_seq values ( 1 )
+Hibernate:
+    insert into login_history_seq values ( 1 )
+22:35:35.042 [restartedMain] DEBUG org.hibernate.SQL --
+    create table login_history (
+        login_history_id bigint not null,
+        login_datetime datetime(6),
+        login_history_memo varchar(255),
+        login_ip varchar(255),
+        member_id varchar(255),
+        stat varchar(255),
+        primary key (login_history_id)
+    ) engine=InnoDB
+Hibernate:
+    create table login_history (
+        login_history_id bigint not null,
+        login_datetime datetime(6),
+        login_history_memo varchar(255),
+        login_ip varchar(255),
+        member_id varchar(255),
+        stat varchar(255),
+        primary key (login_history_id)
+    ) engine=InnoDB
+22:35:35.051 [restartedMain] DEBUG org.hibernate.SQL --
+    create table member (
+        member_id varchar(255) not null,
+        date_create datetime(6),
+        date_update datetime(6),
+        member_address varchar(255),
+        member_del varchar(255),
+        member_email varchar(255),
+        member_name varchar(255),
+        member_phone varchar(255),
+        member_pw varchar(255),
+        member_type varchar(255),
+        primary key (member_id)
+    ) engine=InnoDB
+Hibernate:
+    create table member (
+        member_id varchar(255) not null,
+        date_create datetime(6),
+        date_update datetime(6),
+        member_address varchar(255),
+        member_del varchar(255),
+        member_email varchar(255),
+        member_name varchar(255),
+        member_phone varchar(255),
+        member_pw varchar(255),
+        member_type varchar(255),
+        primary key (member_id)
+    ) engine=InnoDB
+22:35:35.060 [restartedMain] DEBUG org.hibernate.SQL --
+    create table payment_method_seq (
+        next_val bigint
+    ) engine=InnoDB
+Hibernate:
+    create table payment_method_seq (
+        next_val bigint
+    ) engine=InnoDB
+22:35:35.070 [restartedMain] DEBUG org.hibernate.SQL --
+    insert into payment_method_seq values ( 1 )
+Hibernate:
+    insert into payment_method_seq values ( 1 )
+22:35:35.072 [restartedMain] DEBUG org.hibernate.SQL --
+    create table payment_method (
+        payment_method_id bigint not null,
+        member_id varchar(255),
+        payment_method_name varchar(255),
+        sequence varchar(255),
+        primary key (payment_method_id)
+    ) engine=InnoDB
+Hibernate:
+    create table payment_method (
+        payment_method_id bigint not null,
+        member_id varchar(255),
+        payment_method_name varchar(255),
+        sequence varchar(255),
+        primary key (payment_method_id)
+    ) engine=InnoDB
+22:35:35.081 [restartedMain] DEBUG org.hibernate.SQL --
+    create table user_ex (
+        id bigint not null auto_increment,
+        email varchar(255),
+        name varchar(255),
+        password varchar(255),
+        primary key (id)
+    ) engine=InnoDB
+Hibernate:
+    create table user_ex (
+        id bigint not null auto_increment,
+        email varchar(255),
+        name varchar(255),
+        password varchar(255),
+        primary key (id)
+    ) engine=InnoDB
+22:35:35.092 [restartedMain] DEBUG org.hibernate.SQL --
+    alter table expend_statistics_statistics_details
+       drop index UK_t1jc4hyt74s54jf006uj1bg4f
+Hibernate:
+    alter table expend_statistics_statistics_details
+       drop index UK_t1jc4hyt74s54jf006uj1bg4f
+22:35:35.101 [restartedMain] DEBUG org.hibernate.SQL --
+    alter table expend_statistics_statistics_details
+       add constraint UK_t1jc4hyt74s54jf006uj1bg4f unique (statistics_details_statistics_detail_id, statistics_details_statistics_id)
+Hibernate:
+    alter table expend_statistics_statistics_details
+       add constraint UK_t1jc4hyt74s54jf006uj1bg4f unique (statistics_details_statistics_detail_id, statistics_details_statistics_id)
+22:35:35.124 [restartedMain] DEBUG org.hibernate.SQL --
+    alter table expend_moment
+       add constraint FKau4nbuv2uox5qotn06cju69cq
+       foreign key (classification_id)
+       references expend_classification (classification_id)
+Hibernate:
+    alter table expend_moment
+       add constraint FKau4nbuv2uox5qotn06cju69cq
+       foreign key (classification_id)
+       references expend_classification (classification_id)
+22:35:35.151 [restartedMain] DEBUG org.hibernate.SQL --
+    alter table expend_statistics_statistics_details
+       add constraint FKeap8xk7ugajxmnp01sj1axcpa
+       foreign key (statistics_details_statistics_detail_id, statistics_details_statistics_id)
+       references expend_statistics_detail (statistics_detail_id, statistics_id)
+Hibernate:
+    alter table expend_statistics_statistics_details
+       add constraint FKeap8xk7ugajxmnp01sj1axcpa
+       foreign key (statistics_details_statistics_detail_id, statistics_details_statistics_id)
+       references expend_statistics_detail (statistics_detail_id, statistics_id)
+22:35:35.172 [restartedMain] DEBUG org.hibernate.SQL --
+    alter table expend_statistics_statistics_details
+       add constraint FKe137i79eto90w7f5wb0209tjp
+       foreign key (expend_statistics_statistics_id)
+       references expend_statistics (statistics_id)
+Hibernate:
+    alter table expend_statistics_statistics_details
+       add constraint FKe137i79eto90w7f5wb0209tjp
+       foreign key (expend_statistics_statistics_id)
+       references expend_statistics (statistics_id)
+22:35:35.197 [restartedMain] TRACE o.h.type.spi.TypeConfiguration$Scope --Handling #sessionFactoryCreated from [org.hibernate.internal.SessionFactoryImpl@9a9b4b0] for TypeConfiguration
+22:35:35.197 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean --Initialized JPA EntityManagerFactory for persistence unit 'default'
+22:35:35.425 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration --spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+22:35:35.738 [restartedMain] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration --
+
+Using generated security password: c1554fe2-9733-46dd-9f82-fb888138d604
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+22:35:35.756 [restartedMain] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer --Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+22:35:35.880 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer --LiveReload server is running on port 35729
+22:35:35.891 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol --Starting ProtocolHandler ["http-nio-8080"]
+22:35:35.905 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer --Tomcat started on port 8080 (http) with context path '/'
+22:35:35.910 [restartedMain] INFO  com.vanilla.VanillaApplication --Started VanillaApplication in 4.488 seconds (process running for 5.077)
