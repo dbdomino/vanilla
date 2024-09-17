@@ -46,7 +46,7 @@ spring:
   #`resources:templates/` +{ViewName}+ `.html`
   #`resources:templates/home.html`
   thymeleaf:
-    prefix: classpath:/templates/
+    prefix: classpath:/templates/ # 끝에 /필수, 디렉토리로인식
     suffix: .html
 
 server:
