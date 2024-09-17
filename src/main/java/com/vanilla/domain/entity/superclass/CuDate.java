@@ -9,6 +9,6 @@ import java.time.LocalDateTime;
 @MappedSuperclass
 @Getter @Setter
 public abstract class CuDate {
-    private LocalDateTime dateCreate;
-    private LocalDateTime dateUpdate;
+    private LocalDateTime dateCreate=LocalDateTime.now();
+    private LocalDateTime dateUpdate=LocalDateTime.now();
 }
