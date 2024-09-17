@@ -1,10 +1,10 @@
 package com.vanilla.repository;
 
-import com.vanilla.domain.entity.ExpendClassification;
 import com.vanilla.domain.entity.Member;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,13 +22,16 @@ import java.util.Optional;
  */
 @Repository
 @Transactional
+@Slf4j
 public class MemberRepository {
     @PersistenceContext  // 엔티티 메니저(EntityManager) 주입
     private EntityManager em;
 
     // C
-    public void save(ExpendClassification expendClassification) {
-        em.persist(expendClassification);
+    public void save(String memberId, String memberPw, String memberName, String memberEmail, String memberPhone, String memberAddress) {
+        Member member = new Member();
+        member.setMember(memberId, memberPw,memberName,"dom@mii.com","01023242321","ddhh주소소");
+        em.persist(member);
     }
 
     // R
@@ -51,12 +54,19 @@ public class MemberRepository {
         // arrayList로 반환
         return members;
     }
+
+
     public Optional<Member> findByIdPw(String id, String pw) {
-        TypedQuery<Member> query = em.createQuery("select m from Member m where m.memberId = :memberId and memberPw = :memberPw and memberDel = 'N'",Member.class)
-                .setParameter("memberId", id)
-                .setParameter("memberPw", pw);
+        log.info("findById({}, {})",id, pw);
+
+        TypedQuery<Member> query = em.createQuery("select m from Member m where m.memberId = :id and memberPw = :pw and memberDel = 'N'",Member.class)
+                .setParameter("id", id)
+                .setParameter("pw", pw);
         // Optional로 감싸서 반환
-        return query.getResultStream().findFirst();
+        Optional<Member> resultMember = query.getResultStream().findFirst();
+
+
+        return resultMember;
     }
 
     // U
