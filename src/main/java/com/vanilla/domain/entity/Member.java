@@ -5,22 +5,21 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.util.List;
+import lombok.ToString;
 
 @Entity
-@Getter @Setter
+@Getter @Setter @ToString
 public class Member extends CuDate {
     @Id
     private String memberId;
+    private String memberPw;
 
     private String memberName;
     private String memberEmail;
     private String memberPhone;
     private String memberAddress;
-    private String memberPw;
-    private String memberType= "N3";
 
+    private String memberType= "N3";
     private String memberDel = "N";
 
 
@@ -28,6 +27,16 @@ public class Member extends CuDate {
 //
 //        return paymentMethods;
 //    }
+
+    public void setMember(String memberId, String memberPw, String memberName, String memberEmail,String memberPhone,String memberAddress ){
+        this.memberId = memberId;
+        this.memberPw = memberPw;
+        this.memberName = memberName;
+        this.memberEmail = memberEmail;
+        this.memberPhone = memberPhone;
+        this.memberAddress = memberAddress;
+
+    }
 
 
 
