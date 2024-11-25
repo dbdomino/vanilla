@@ -6,7 +6,7 @@ spring:
   application:
     name: vanilla_v1
   datasource:
-    url: jdbc:mysql://localhost:3306/dbvanilla?useSSL=false
+    url: jdbc:mysql://localhost:3306/dbvanilla?useSSL=false&allowPublicKeyRetrieval=true
     username: minod
     password: minod
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -29,11 +29,12 @@ spring:
       leak-detection-threshold: 2000
   jpa:
     hibernate:
-      ddl-auto: update
-      dialect: org.hibernate.dialect.PostgreSQL10Dialect # 밑줄뜨더라도 정상...
-      default_schema: public  # 밑줄뜨더라도 정상...
+      ddl-auto: update  # 여기 있어야 제대로 hibernate가 동작함.
     properties:
       hibernate:
+        #dialect: org.hibernate.dialect.PostgreSQL10Dialect # 밑줄뜨더라도 정상...
+        #default_schema: public  # 밑줄뜨더라도 정상...
+        # mysql 쓰려면 이거 지우라고 알림떠서 지워봄. dialect: org.hibernate.dialect.MySQLDialect
         show_sql: true
         format_sql: true
   servlet:
