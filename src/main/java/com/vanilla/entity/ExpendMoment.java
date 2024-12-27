@@ -1,4 +1,4 @@
-package com.vanilla.domain.entity;
+package com.vanilla.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -16,11 +16,6 @@ public class ExpendMoment extends Expend {
 
     private String expendLocation;
 
-    // 연관관계
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "classification_id")
-//    private Long classificationId;
-    private ExpendClassification classificationId;
 
     // 연관관계
     private Long paymentMethodId;

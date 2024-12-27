@@ -1,4 +1,4 @@
-package com.vanilla.domain.entity;
+package com.vanilla.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;

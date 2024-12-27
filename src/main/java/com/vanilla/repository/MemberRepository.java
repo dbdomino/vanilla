@@ -1,6 +1,6 @@
 package com.vanilla.repository;
 
-import com.vanilla.domain.entity.Member;
+import com.vanilla.entity.Member;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;

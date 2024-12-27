@@ -1,6 +1,6 @@
 package com.vanilla.controller;
 
-import com.vanilla.domain.entity.Member;
+import com.vanilla.entity.Member;
 import com.vanilla.service.MemberService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

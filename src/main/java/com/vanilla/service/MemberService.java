@@ -1,6 +1,6 @@
 package com.vanilla.service;
 
-import com.vanilla.domain.entity.Member;
+import com.vanilla.entity.Member;
 import com.vanilla.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

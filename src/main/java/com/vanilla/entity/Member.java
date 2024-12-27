@@ -1,6 +1,6 @@
-package com.vanilla.domain.entity;
+package com.vanilla.entity;
 
-import com.vanilla.domain.entity.superclass.CuDate;
+import com.vanilla.entity.superclass.CuDate;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.Getter;

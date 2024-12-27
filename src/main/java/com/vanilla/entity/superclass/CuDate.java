@@ -1,4 +1,4 @@
-package com.vanilla.domain.entity.superclass;
+package com.vanilla.entity.superclass;
 
 
 import jakarta.persistence.MappedSuperclass;
