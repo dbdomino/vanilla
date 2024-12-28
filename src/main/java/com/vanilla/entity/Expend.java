@@ -2,6 +2,7 @@ package com.vanilla.entity;
 
 import com.vanilla.entity.superclass.CuDate;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Comment;
@@ -25,7 +26,19 @@ public abstract class Expend extends CuDate {
     @Comment("지출 금액")
     private Long expendCost;
 
-    @Comment("지출 메모")
+    @NotEmpty
+    @Comment("지출 날짜")
+    private int expendDay;
+
+    @NotEmpty
+    @Comment("지출 월")
+    private int expendMonth;
+
+    @NotEmpty
+    @Comment("지출 연")
+    private int expendYear;
+
+    @Comment("지출 설명")
     private String expendMemo;
 
     @Comment("상태, 0: 활성, 1: 결제취소, 2: 삭제")
