@@ -30,6 +30,9 @@ public class ExpendGroup extends CuDate {
     @Comment("지출 그룹 이름")
     private String expendGroupName;
 
+    @Comment("지출 그룹 설명")
+    private String expendGroupMemo;
+
     @NotNull
     @Comment("월간 한도 금액")
     private Long limitCost;
