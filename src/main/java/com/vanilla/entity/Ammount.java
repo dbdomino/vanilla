@@ -1,19 +1,22 @@
 package com.vanilla.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Comment;
-
+/** @since  2024-12-28
+ * @author dbdomino
+ * @version 1.0
+ */
 @Entity
+@Table(name = "tbl_Ammount")
+@Builder(toBuilder = true)
 @Getter @Setter
 public class Ammount {
     @Id @GeneratedValue
     @Comment("재산 Id")
-    private int id;
+    private Long id;
 
     @Comment("회원Id")
     @Column(nullable = false)
@@ -28,4 +31,5 @@ public class Ammount {
     @Comment("재산 종류 0: 은행 잔고  1: 예금,  2: 적금   3: 기타")
     private String ammountType;
 
+    protected Ammount() {}
 }

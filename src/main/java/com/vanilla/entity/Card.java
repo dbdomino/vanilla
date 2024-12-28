@@ -1,15 +1,18 @@
 package com.vanilla.entity;
 
 import com.vanilla.entity.superclass.CuDate;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Comment;
-
+/** @since  2024-12-28
+ * @author dbdomino
+ * @version 1.0
+ */
 @Entity
+@Table(name = "tbl_card")
+@Builder(toBuilder = true)
 @Getter @Setter
 public class Card extends CuDate {
 
@@ -32,5 +35,7 @@ public class Card extends CuDate {
 
     @Comment("카드 설명")
     private String cardMemo;
+
+    protected Card() {}
 
 }

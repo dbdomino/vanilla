@@ -4,14 +4,20 @@ import com.vanilla.entity.superclass.CuDate;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Comment;
-
+/** @since  2024-12-28
+ * @author dbdomino
+ * @version 1.0
+ */
 @Entity
-@Getter
-@Setter
+@Table(name = "tbl_system_stat")
+@Builder(toBuilder = true)
+@Getter @Setter
 public class SystemStat extends CuDate {
     @Id @GeneratedValue
     @Comment("사용자별 시스템 설정 Id")
@@ -28,5 +34,6 @@ public class SystemStat extends CuDate {
     @Comment("기본 가계부 정렬")
     private String systemSequence;
 
+    protected SystemStat() {}
 
 }

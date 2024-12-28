@@ -3,11 +3,17 @@ package com.vanilla.entity;
 import com.vanilla.entity.superclass.CuDate;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Comment;
-
+/** @since  2024-12-28
+ * @author dbdomino
+ * @version 1.0
+ */
 @Entity
+@Table(name = "tbl_expend_fix")
+@Builder(toBuilder = true)
 @Getter @Setter
 public class ExpendFix extends CuDate {
 
@@ -35,6 +41,6 @@ public class ExpendFix extends CuDate {
     @Comment("고정지출 상태  0: 비활성, 1: 활성")
     private int expendFixStat=1;
 
-
+    protected ExpendFix() {}
 
 }

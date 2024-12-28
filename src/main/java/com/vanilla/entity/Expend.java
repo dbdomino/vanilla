@@ -3,18 +3,25 @@ package com.vanilla.entity;
 import com.vanilla.entity.superclass.CuDate;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Comment;
-
+/** @since  2024-12-28
+ * @author dbdomino
+ * @version 1.0
+ */
 @Entity
-@Inheritance(strategy= InheritanceType.TABLE_PER_CLASS)
+//@Inheritance(strategy= InheritanceType.TABLE_PER_CLASS)
+//@NoArgsConstructor //Builder와 충돌
+@Table(name = "tbl_expend")
+@Builder(toBuilder = true)
 @Getter @Setter
-public abstract class Expend extends CuDate {
+public class Expend extends CuDate {
     @Id
     @GeneratedValue
     @Comment("지출 ID")
-    private Long Id;
+    private Long expendId;
 
     @Comment("회원Id")
     @Column(nullable = false)
@@ -54,5 +61,5 @@ public abstract class Expend extends CuDate {
     @Comment("결제 방법 ID")
     private PaymentMethod paymentMethod;
 
-
+    protected Expend() {}
 }

@@ -1,21 +1,24 @@
 package com.vanilla.entity;
 
 import com.vanilla.entity.superclass.CuDate;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.NamedQuery;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Comment;
-
+/** @since  2024-12-28
+ * @author dbdomino
+ * @version 1.0
+ */
 @NamedQuery( // name ="StaticQuery"   이런식으로 그냥 써도 되지만, 엔티티명.쿼리명 으로 쓰는게 관례 라고 함.
         name = "ExpendClassification.findByUsername",
         query = "select m from ExpendGroup m where m.memberId = :memberId" // 쿼리 이상할 경우컴파일에러로 스프링 실행안됨. (이게 장점이라고 함)
 )
 @Entity
+@Table(name = "tbl_expend_group")
+@Builder(toBuilder = true)
 @Getter @Setter
 public class ExpendGroup extends CuDate {
     @Id @GeneratedValue
@@ -45,4 +48,5 @@ public class ExpendGroup extends CuDate {
     @Comment("지출 그룹 상태 0: 활성, 1: 비활성")
     private String stat;
 
+    protected ExpendGroup() {}
 }

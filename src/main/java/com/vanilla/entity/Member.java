@@ -4,14 +4,20 @@ import com.vanilla.entity.superclass.CuDate;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 import org.hibernate.annotations.Comment;
-
+/** @since  2024-12-28
+ * @author dbdomino
+ * @version 1.0
+ */
 @Entity
-@Getter @Setter @ToString
+@Table(name = "tbl_member")
+@Builder(toBuilder = true)
+@Getter @Setter
 public class Member extends CuDate {
     @Id @Column(nullable = false, unique = true)
     @Comment("회원 id")
@@ -37,11 +43,11 @@ public class Member extends CuDate {
 
 
     // Default constructor (required by JPA)
-    public Member() {
+    protected Member() {
     }
 
     // Constructor with fields
-    public Member(String id, String pw) {
+    protected Member(String id, String pw) {
         this.id = id;
         this.pw = name;
     }
