@@ -29,8 +29,16 @@ public class MemberRepository {
 
     // C
     public void save(String memberId, String memberPw, String memberName, String memberEmail, String memberPhone, String memberAddress) {
-        Member member = new Member();
-        member.setMember(memberId, memberPw,memberName,"dom@mii.com","01023242321","ddhh주소소");
+        Member member = Member.builder()
+                .id(memberId)
+                .pw(memberPw)
+                .name(memberName)
+                .email(memberEmail)
+                .phone(memberPhone)
+                .address(memberAddress)
+                .build();
+//        Member member = new member();
+//        member.setMember(memberId, memberPw,memberName,"dom@mii.com","01023242321","ddhh주소소");
         em.persist(member);
     }
 
