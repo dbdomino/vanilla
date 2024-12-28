@@ -4,6 +4,7 @@ import com.vanilla.entity.Ammount;
 import com.vanilla.repository.itf.AmmountRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,8 +20,18 @@ public class AmmountService {
     public Optional<Ammount> getAmmountById(Long id) {
         return ammountRepository.findById(id);
     }
-    public Ammount createOrUpdateAmmount(Ammount ammount) {
-        return ammountRepository.save(ammount);
+    @Transactional
+    public void  createOrUpdateAmmount(Ammount ammount) {
+        ammountRepository.save(ammount);
+    }
+    // Ammount 삭제
+    @Transactional
+    public void deleteAmmount(Ammount ammount) {
+        ammountRepository.delete(ammount);
+    }
+
+    public List<Ammount> getAmmountsByMemberId(String memberId) {
+        return ammountRepository.findByMemberId(memberId);
     }
 
 }
