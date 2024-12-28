@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 /** @since  2024-12-28
  * @author dbdomino
@@ -30,8 +31,8 @@ public class AmmountRepositoryImpl implements AmmountRepository {
         return em.createQuery("SELECT a FROM Ammount a", Ammount.class).getResultList();
     }
 
-    public Ammount findById(Long id) {
-        return em.find(Ammount.class, id);
+    public Optional<Ammount> findById(Long id) {
+        return Optional.ofNullable(em.find(Ammount.class, id));
     }
 
     @Transactional
@@ -46,6 +47,12 @@ public class AmmountRepositoryImpl implements AmmountRepository {
     @Transactional
     public void delete(Ammount ammount) {
         em.remove(ammount);
+    }
+
+    public List<Ammount> findByMemberId(String memberId) {
+        return em.createQuery("SELECT a FROM Ammount a WHERE a.memberId = :memberId", Ammount.class)
+                .setParameter("memberId", memberId)
+                .getResultList();
     }
 
 }
