@@ -14,7 +14,7 @@ import org.hibernate.annotations.Comment;
 @Builder(toBuilder = true)
 @Getter @Setter
 public class Ammount {
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Comment("재산 Id")
     private Long id;
 

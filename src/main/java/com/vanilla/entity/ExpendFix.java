@@ -17,7 +17,7 @@ import org.hibernate.annotations.Comment;
 @Getter @Setter
 public class ExpendFix extends CuDate {
 
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Comment("고정지출 Id")
     private Long expendFixId;
 

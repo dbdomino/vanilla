@@ -1,9 +1,6 @@
 package com.vanilla.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,7 +16,7 @@ import java.time.LocalDateTime;
 @Builder(toBuilder = true)
 @Getter @Setter
 public class LoginHistory {
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Comment("로그인 이력 기본키")
     private Long loginHistoryId;
 

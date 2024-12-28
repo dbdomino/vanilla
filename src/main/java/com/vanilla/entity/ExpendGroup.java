@@ -21,7 +21,7 @@ import org.hibernate.annotations.Comment;
 @Builder(toBuilder = true)
 @Getter @Setter
 public class ExpendGroup extends CuDate {
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Comment("지출 그룹 Id")
     private Long expendGroupId;
 
