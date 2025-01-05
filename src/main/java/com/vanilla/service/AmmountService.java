@@ -1,6 +1,7 @@
 package com.vanilla.service;
 
-import com.vanilla.entity.Ammount;
+import com.vanilla.dto.service.AmmountServiceDto;
+import com.vanilla.mapper.AmmountMapper;
 import com.vanilla.repository.itf.AmmountRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,25 +14,28 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class AmmountService {
     private final AmmountRepository ammountRepository;
+    private final AmmountMapper ammountMapper;
 
-    public List<Ammount> getAllAmmounts() {
-        return ammountRepository.findAll();
+    public List<AmmountServiceDto> getAllAmmounts() {
+        return ammountMapper.toServiceDtoList(ammountRepository.findAll());
     }
-    public Optional<Ammount> getAmmountById(Long id) {
-        return ammountRepository.findById(id);
+    public Optional<AmmountServiceDto> getAmmountById(Long id) {
+        return ammountRepository.findById(id)
+                .map(ammount -> ammountMapper.toServiceDto(ammount));
     }
     @Transactional
-    public void  createOrUpdateAmmount(Ammount ammount) {
-        ammountRepository.save(ammount);
+    public void  createOrUpdateAmmount(AmmountServiceDto ammountServiceDto) {
+        ammountRepository.save(ammountMapper.toEntity(ammountServiceDto));
     }
+
     // Ammount 삭제
     @Transactional
-    public void deleteAmmount(Ammount ammount) {
-        ammountRepository.delete(ammount);
+    public void deleteAmmount(AmmountServiceDto ammountServiceDto) {
+        ammountRepository.delete(ammountMapper.toEntity(ammountServiceDto));
     }
 
-    public List<Ammount> getAmmountsByMemberId(String memberId) {
-        return ammountRepository.findByMemberId(memberId);
+    public List<AmmountServiceDto> getAmmountsByMemberId(String memberId) {
+        return ammountMapper.toServiceDtoList(ammountRepository.findByMemberId(memberId));
     }
 
 }
