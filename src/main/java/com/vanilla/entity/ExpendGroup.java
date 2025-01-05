@@ -44,7 +44,8 @@ public class ExpendGroup extends CuDate {
 
     @NotBlank
     @Comment("출력 순서")
-    private int sequence = 0;
+    @Builder.Default
+    private String sequence = "0";
 
     @NotBlank
     @Comment("지출 그룹 상태 0: 활성, 1: 비활성")

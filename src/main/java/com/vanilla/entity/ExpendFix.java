@@ -32,6 +32,7 @@ public class ExpendFix extends CuDate {
     private String expendFixName;
 
     @Comment("출금일")
+    @Builder.Default
     private int outDay = 1;
 
     @Comment("고정지출 설명")
@@ -41,6 +42,7 @@ public class ExpendFix extends CuDate {
     private String expendFixType;
 
     @Comment("고정지출 상태  0: 비활성, 1: 활성")
+    @Builder.Default
     private int expendFixStat=1;
 
     protected ExpendFix() {}

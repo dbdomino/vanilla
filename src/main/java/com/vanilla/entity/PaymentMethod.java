@@ -32,6 +32,7 @@ public class PaymentMethod extends CuDate {
 
     @NotEmpty
     @Comment("정렬 순서")
+    @Builder.Default
     private String sequence= "0";
 
     protected PaymentMethod() {}

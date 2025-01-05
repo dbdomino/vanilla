@@ -39,8 +39,10 @@ public class Member extends CuDate {
     private String address;
 
     @Comment("회원 유형 0: 일반 사용자  1: 관리자")
+    @Builder.Default
     private String type = "0";
     @Comment("회원 삭제유무")
+    @Builder.Default
     private String isDel = "N";
 
 
