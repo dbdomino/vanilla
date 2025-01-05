@@ -1,6 +1,7 @@
 package com.vanilla.controller;
 
-import com.vanilla.entity.Ammount;
+import com.vanilla.dto.response.AmmountResponseDto;
+import com.vanilla.mapper.AmmountMapper;
 import com.vanilla.service.AmmountService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestClient;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -19,26 +19,23 @@ import java.util.Optional;
 public class AmmountController {
     private final AmmountService ammountService;
     private final RestClient restClient = RestClient.builder().build();
+    private final AmmountMapper ammountMapper;
 
     @GetMapping
-    public List<Ammount> getAllAmmounts() {
-        return ammountService.getAllAmmounts();
+    public List<AmmountResponseDto> getAllAmmounts() {
+        return ammountMapper.toResponseDtoList(ammountService.getAllAmmounts());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Ammount> getAmmountById(@PathVariable Long id) {
+    public ResponseEntity<AmmountResponseDto> getAmmountById(@PathVariable Long id) {
         return ammountService.getAmmountById(id)
-                .map(ResponseEntity::ok) // Optional이 비어 있지 않다면 200 OK와 함께 데이터 반환
+                .map(serviceDto -> ResponseEntity.ok().body(ammountMapper.toResponseDto(serviceDto)) ) // Optional이 비어 있지 않다면 200 OK와 함께 데이터 반환
                 .orElseGet(() -> ResponseEntity.notFound().build());  // Optional이 비어 있다면 404 Not Found 반환
     }
 
     @GetMapping("/member/{memberId}")
-    public ResponseEntity<List<Ammount>> getAmmountByMemberId(@PathVariable String memberId) {
-        List<Ammount> ammountList = ammountService.getAmmountsByMemberId(memberId);
-        return Optional.of(ammountService.getAmmountsByMemberId(memberId))
-                .filter(list -> !list.isEmpty())
-                .map(ResponseEntity::ok)
-                .orElseGet( () -> ResponseEntity.notFound().build());
+    public ResponseEntity<List<AmmountResponseDto>> getAmmountByMemberId(@PathVariable String memberId) {
+        return ResponseEntity.ok().body(ammountMapper.toResponseDtoList(ammountService.getAmmountsByMemberId(memberId)));
 //        return ammountList.isEmpty() ? ResponseEntity.notFound().build() : ResponseEntity.ok(ammountList);
 //        if (ammountList.isEmpty()) {
 //            return ResponseEntity.notFound().build();
