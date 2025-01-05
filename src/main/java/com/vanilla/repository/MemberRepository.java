@@ -84,9 +84,9 @@ public class MemberRepository {
             throw new IllegalArgumentException("updateMember fail, Invalid member ID: " + MemberId);
         }
 
-        member.setMemberName(memberName);
-        member.setMemberEmail(memberEmail);
-        member.setMemberPhone(memberPhone);
+        member.setName(memberName);
+        member.setEmail(memberEmail);
+        member.setPhone(memberPhone);
 
         em.merge(member);
 
@@ -99,7 +99,7 @@ public class MemberRepository {
         }
 
         // encrypt pw
-        member.setMemberName(pw);
+        member.setName(pw);
         // encrypt pw
 
         em.merge(member);
@@ -114,7 +114,7 @@ public class MemberRepository {
             throw new IllegalArgumentException("delete fail, Invalid member ID: " + memberId);
         }
         // encrypt pw
-        member.setMemberDel("Y");
+        member.setIsDel("Y");
         // encrypt pw
 
         em.merge(member);
