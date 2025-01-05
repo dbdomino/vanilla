@@ -2,6 +2,7 @@ package com.vanilla.entity;
 
 import com.vanilla.entity.superclass.CuDate;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,6 +14,7 @@ import org.hibernate.annotations.Comment;
 @Entity
 @Table(name = "tbl_card")
 @Builder(toBuilder = true)
+@AllArgsConstructor
 @Getter @Setter
 public class Card extends CuDate {
 
