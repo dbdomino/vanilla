@@ -1,6 +1,6 @@
 package com.vanilla.common.exception;
 
-import com.vanilla.common.constants.ServiceResponse;
+import com.vanilla.common.constants.CodeCommon;
 import lombok.ToString;
 
 /** @since  2024-12-28
@@ -16,7 +16,7 @@ public class ServiceException extends RuntimeException {
     private final Integer code;
     private final String message;
 
-    public ServiceException(ServiceResponse response) {
+    public ServiceException(CodeCommon response) {
         super(String.format("%s", response.getMessage()));
         this.code = response.getCode();
         this.message = response.getMessage();

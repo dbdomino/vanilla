@@ -1,7 +1,7 @@
 package com.vanilla.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.vanilla.common.constants.ServiceResponse;
+import com.vanilla.common.constants.CodeCommon;
 import com.vanilla.common.exception.ServiceException;
 import lombok.*;
 /** @since  2024-12-28
@@ -21,7 +21,7 @@ public class RestResponseDto<T> {
 
     private T data;
 
-    public static <T> RestResponseDtoBuilder<T> of(ServiceResponse status) {
+    public static <T> RestResponseDtoBuilder<T> of(CodeCommon status) {
         return RestResponseDto.<T>builder()
                 .code(status.getCode())
                 .message(status.getMessage());
@@ -66,7 +66,7 @@ public class RestResponseDto<T> {
      */
 
 
-    public boolean eq(ServiceResponse serviceResponse) {
+    public boolean eq(CodeCommon serviceResponse) {
         return this.code.equals(serviceResponse.getCode());
     }
 }
