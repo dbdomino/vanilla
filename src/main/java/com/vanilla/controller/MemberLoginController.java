@@ -53,16 +53,4 @@ public class MemberLoginController {
 
 
 
-    @GetMapping("/signupnow") // 회원가입
-    public String signUpSample(Model model) {
-        log.info("start signUpSample");
-        String id = "minod";
-        String pw = "minod";
-        String name = "미노드";
-
-        Member member = memberService.signUp(id,pw, name,"minod@dfd.com","01011112222","address---");
-
-        model.addAttribute("memberId", member.getMemberId());  // 로그인 성공 시 ID를 모델에 추가
-        return "page/signupsample";  // 홈 페이지로 이동
-    }
 }

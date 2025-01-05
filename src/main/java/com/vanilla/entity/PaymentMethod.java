@@ -3,6 +3,7 @@ package com.vanilla.entity;
 import com.vanilla.entity.superclass.CuDate;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,6 +15,7 @@ import org.hibernate.annotations.Comment;
 @Entity
 @Table(name = "tbl_payment_Method")
 @Builder(toBuilder = true)
+@AllArgsConstructor
 @Getter @Setter
 public class PaymentMethod extends CuDate {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)

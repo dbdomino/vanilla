@@ -1,9 +1,7 @@
 package com.vanilla.entity;
 
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.Comment;
 /** @since  2024-12-28
  * @author dbdomino
@@ -13,6 +11,7 @@ import org.hibernate.annotations.Comment;
 @Entity
 @Table(name = "tbl_Ammount")
 @Builder(toBuilder = true)
+@AllArgsConstructor
 @Getter @Setter
 public class Ammount {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)

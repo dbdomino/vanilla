@@ -3,6 +3,7 @@ package com.vanilla.entity;
 import com.vanilla.entity.superclass.CuDate;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,6 +17,7 @@ import org.hibernate.annotations.Comment;
 //@NoArgsConstructor //Builder와 충돌
 @Table(name = "tbl_expend")
 @Builder(toBuilder = true)
+@AllArgsConstructor
 @Getter @Setter
 public class Expend extends CuDate {
     @Id    @GeneratedValue(strategy = GenerationType.IDENTITY)

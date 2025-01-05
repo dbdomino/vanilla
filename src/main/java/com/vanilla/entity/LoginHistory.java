@@ -1,6 +1,7 @@
 package com.vanilla.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,6 +15,7 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "tbl_login_history")
 @Builder(toBuilder = true)
+@AllArgsConstructor
 @Getter @Setter
 public class LoginHistory {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
