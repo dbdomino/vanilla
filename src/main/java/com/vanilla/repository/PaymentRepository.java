@@ -1,8 +1,6 @@
 package com.vanilla.repository;
 
-import com.vanilla.domain.entity.ExpendClassification;
-import com.vanilla.domain.entity.Member;
-import com.vanilla.domain.entity.PaymentMethod;
+import com.vanilla.entity.PaymentMethod;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;

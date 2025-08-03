@@ -231,6 +231,7 @@ buildNumber.properties
 
 ### Gradle ###
 .gradle
+.gradle/
 /build/
 .gradletasknamecache
 **/build/

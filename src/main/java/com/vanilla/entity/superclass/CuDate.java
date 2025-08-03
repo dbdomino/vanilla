@@ -1,4 +1,4 @@
-package com.vanilla.domain.entity.superclass;
+package com.vanilla.entity.superclass;
 
 
 import jakarta.persistence.MappedSuperclass;
@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 @MappedSuperclass
+//@Builder(toBuilder = true)
 @Getter @Setter
 public abstract class CuDate {
     private LocalDateTime dateCreate=LocalDateTime.now();

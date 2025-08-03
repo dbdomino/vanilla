@@ -1,0 +1,39 @@
+version: 0.2
+
+env:
+  variables:
+    BITBUCKET_REPO: "git@bitbucket.org:your-team/your-repo.git"
+    BITBUCKET_BRANCH: "feature-branch"
+    CODECOMMIT_REPO: "https://git-codecommit.<region>.amazonaws.com/v1/repos/your-codecommit-repo"
+    CODECOMMIT_BRANCH: "dev"
+
+phases:
+  install:
+    commands:
+      - yum install -y git
+  pre_build:
+    commands:
+      # Bitbucket SSH Key 설정 (환경 변수에 SSH Key를 저장해 둬야 함)
+      - echo "Setting up SSH Key for Bitbucket"
+      - mkdir -p ~/.ssh
+      - echo "$BITBUCKET_SSH_KEY" > ~/.ssh/id_rsa
+      - chmod 600 ~/.ssh/id_rsa
+      - ssh-keyscan bitbucket.org >> ~/.ssh/known_hosts
+
+      # Git 설정
+      - git config --global user.email "your-email@example.com"
+      - git config --global user.name "CodeBuild"
+
+  build:
+    commands:
+      # Bitbucket에서 특정 브랜치 가져오기
+      - git clone -b $BITBUCKET_BRANCH $BITBUCKET_REPO repo
+      - cd repo
+
+      # AWS CodeCommit으로 Push
+      - git remote add codecommit $CODECOMMIT_REPO
+      - git push --force codecommit $BITBUCKET_BRANCH:$CODECOMMIT_BRANCH
+
+  post_build:
+    commands:
+      - echo "Code successfully pushed to CodeCommit"

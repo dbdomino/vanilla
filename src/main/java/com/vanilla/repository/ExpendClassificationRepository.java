@@ -1,6 +1,6 @@
 package com.vanilla.repository;
 
-import com.vanilla.domain.entity.ExpendClassification;
+import com.vanilla.entity.ExpendGroup;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
@@ -23,49 +23,49 @@ public class ExpendClassificationRepository {
     private EntityManager em;
 
     // C
-    public void save(ExpendClassification expendClassification) {
-        em.persist(expendClassification);
+    public void save(ExpendGroup expendGroup) {
+        em.persist(expendGroup);
     }
 
     // R
-    public ExpendClassification findOne(Long id) {
-        return em.find(ExpendClassification.class, id);
+    public ExpendGroup findOne(Long id) {
+        return em.find(ExpendGroup.class, id);
     }
-    public List<ExpendClassification> findByName(String memberId) {
+    public List<ExpendGroup> findByName(String memberId) {
         // named 쿼리
-        TypedQuery<ExpendClassification> query = em.createNamedQuery("ExpendClassification.findByUsername",ExpendClassification.class)
+        TypedQuery<ExpendGroup> query = em.createNamedQuery("ExpendClassification.findByUsername", ExpendGroup.class)
                 .setParameter("memberId", memberId);
-        List<ExpendClassification> expendClassifications = query.getResultList();
+        List<ExpendGroup> expendGroups = query.getResultList();
         // jpql 쿼리
 //        TypedQuery<ExpendClassification> query2 = em.createQuery("select m from ExpendClassification m where m.memberId = :memberId",ExpendClassification.class)
 //                .setParameter("memberId", memberId);
 //        List<ExpendClassification> expendClassifications2 = query.getResultList(); // arrayList로 반환
-        return expendClassifications;
+        return expendGroups;
     }
 
     // U
-    public ExpendClassification updateExpendClassification(Long classificationId, String classificationName, Long limitCost, String sequence, String stat) {
-        ExpendClassification expendClassification = findOne(classificationId);
-        if (expendClassification == null) {
+    public ExpendGroup updateExpendClassification(Long classificationId, String classificationName, Long limitCost, String sequence, String stat) {
+        ExpendGroup expendGroup = findOne(classificationId);
+        if (expendGroup == null) {
             throw new IllegalArgumentException("updateExpendClassification fail, Invalid classification ID: " + classificationId);
         }
 
-        expendClassification.setClassificationName(classificationName);
-        expendClassification.setLimitCost(limitCost);
-        expendClassification.setSequence(sequence);
-        expendClassification.setStat(stat);
+        expendGroup.setExpendGroupName(classificationName);
+        expendGroup.setLimitCost(limitCost);
+        expendGroup.setSequence(sequence);
+        expendGroup.setStat(stat);
 
-        em.merge(expendClassification);
+        em.merge(expendGroup);
 
-        return expendClassification;
+        return expendGroup;
     }
 
     // D
     public void delete(Long id) {
-        ExpendClassification expendClassification = findOne(id);
-        if (expendClassification == null) {
+        ExpendGroup expendGroup = findOne(id);
+        if (expendGroup == null) {
             throw new IllegalArgumentException("delete fail, Invalid classification ID: " + id);
         }
-        em.remove(expendClassification);
+        em.remove(expendGroup);
     }
 }

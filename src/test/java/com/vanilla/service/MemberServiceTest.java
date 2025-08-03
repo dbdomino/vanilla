@@ -1,6 +1,6 @@
 package com.vanilla.service;
 
-import com.vanilla.domain.entity.Member;
+import com.vanilla.entity.Member;
 import com.vanilla.repository.MemberRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.api.Assertions;
