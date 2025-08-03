@@ -4,6 +4,7 @@ import com.vanilla.entity.superclass.CuDate;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,9 +20,10 @@ import org.hibernate.annotations.Comment;
 @Entity
 @Table(name = "tbl_expend_group")
 @Builder(toBuilder = true)
+@AllArgsConstructor
 @Getter @Setter
 public class ExpendGroup extends CuDate {
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Comment("지출 그룹 Id")
     private Long expendGroupId;
 
@@ -42,7 +44,8 @@ public class ExpendGroup extends CuDate {
 
     @NotBlank
     @Comment("출력 순서")
-    private int sequence = 0;
+    @Builder.Default
+    private String sequence = "0";
 
     @NotBlank
     @Comment("지출 그룹 상태 0: 활성, 1: 비활성")

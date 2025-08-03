@@ -50,7 +50,7 @@ public class ExpendClassificationRepository {
             throw new IllegalArgumentException("updateExpendClassification fail, Invalid classification ID: " + classificationId);
         }
 
-        expendGroup.setClassificationName(classificationName);
+        expendGroup.setExpendGroupName(classificationName);
         expendGroup.setLimitCost(limitCost);
         expendGroup.setSequence(sequence);
         expendGroup.setStat(stat);

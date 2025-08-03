@@ -1,11 +1,9 @@
 package com.vanilla.entity;
 
 import com.vanilla.entity.superclass.CuDate;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,9 +15,10 @@ import org.hibernate.annotations.Comment;
 @Entity
 @Table(name = "tbl_payment_Method")
 @Builder(toBuilder = true)
+@AllArgsConstructor
 @Getter @Setter
 public class PaymentMethod extends CuDate {
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Comment("결제 방법 ID")
     private Long paymentMethodId;
 
@@ -33,6 +32,7 @@ public class PaymentMethod extends CuDate {
 
     @NotEmpty
     @Comment("정렬 순서")
+    @Builder.Default
     private String sequence= "0";
 
     protected PaymentMethod() {}

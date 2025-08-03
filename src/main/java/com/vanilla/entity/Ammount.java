@@ -1,20 +1,20 @@
 package com.vanilla.entity;
 
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.Comment;
 /** @since  2024-12-28
  * @author dbdomino
  * @version 1.0
+ * 재산 정보
  */
 @Entity
 @Table(name = "tbl_Ammount")
 @Builder(toBuilder = true)
+@AllArgsConstructor
 @Getter @Setter
 public class Ammount {
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Comment("재산 Id")
     private Long id;
 

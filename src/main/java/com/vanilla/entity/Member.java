@@ -6,6 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,6 +18,7 @@ import org.hibernate.annotations.Comment;
 @Entity
 @Table(name = "tbl_member")
 @Builder(toBuilder = true)
+@AllArgsConstructor
 @Getter @Setter
 public class Member extends CuDate {
     @Id @Column(nullable = false, unique = true)
@@ -37,8 +39,10 @@ public class Member extends CuDate {
     private String address;
 
     @Comment("회원 유형 0: 일반 사용자  1: 관리자")
+    @Builder.Default
     private String type = "0";
     @Comment("회원 삭제유무")
+    @Builder.Default
     private String isDel = "N";
 
 

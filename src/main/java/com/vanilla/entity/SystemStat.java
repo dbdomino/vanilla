@@ -1,11 +1,9 @@
 package com.vanilla.entity;
 
 import com.vanilla.entity.superclass.CuDate;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,9 +15,10 @@ import org.hibernate.annotations.Comment;
 @Entity
 @Table(name = "tbl_system_stat")
 @Builder(toBuilder = true)
+@AllArgsConstructor
 @Getter @Setter
 public class SystemStat extends CuDate {
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Comment("사용자별 시스템 설정 Id")
     private Long id;
 
